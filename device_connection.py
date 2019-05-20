@@ -18,9 +18,9 @@ def main():
     devices_motion = list(filter(lambda device: isinstance(device, object_motion), devices))
 
     # Print device lists
-    print("Found", str(len(devices)), "Devices.")
-    print("Found", str(len(devices_pixel)), "Pixel Devices.")
-    print("Found", str(len(devices_motion)), "Motion Devices.")
+    print("Found", str(len(devices)), "device(s) in total.")
+    print("Found", str(len(devices_pixel)), "pixel device(s).")
+    print("Found", str(len(devices_motion)), "motion device(s).")
 
     # Exit program
     os._exit(1)
