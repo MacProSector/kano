@@ -1,3 +1,5 @@
+#!/bin/node
+
 const DeviceManager = require("./communitysdk/devicemanager");
 const PixelKit = require("./communitysdk/retailpixelkit");
 const MotionSensorKit = require("./communitysdk/motionsensorkit");
