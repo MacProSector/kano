@@ -7,13 +7,13 @@ const Library = require("./library");
 const device_ip = "10.0.1.38"
 let device_pixel = new PixelKit({ip: device_ip});
 let header = new Header();
-let date = new Date();
 let separator_on = true;
 let separator_time_counter = 0;
 
 function clock()
 {
     // Declare variable
+	let date = new Date();
 	let hour = date.getHours();
 	let hour_second = hour % 10;
 	let hour_first = (hour - hour_second) / 10;
