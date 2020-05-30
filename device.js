@@ -31,7 +31,7 @@ function status_pixel(devices_pixel, print_info = false)
 
     if (devices_pixel.length > 0)
 	{
-		for (i = 0; i < devices_pixel.length; i ++)
+		for (let i = 0; i < devices_pixel.length; i ++)
 		{
 		    let status_battery = devices_pixel[i].getBatteryStatus()
 				.then((status_battery) => {
@@ -80,6 +80,8 @@ function main(devices)
 {
 	const [devices_pixel, devices_motion] = discover(devices, true);
 	const devices_status = status_pixel(devices_pixel, true);
+
+	return devices_status;
 }
 
 DeviceManager.listConnectedDevices().then((devices) => main(devices));

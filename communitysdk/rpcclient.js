@@ -6,6 +6,7 @@ class RPCClient extends EventEmitter {
         super();
         // When the data is an `rpc-response`, creates a custom event on
         // internal emitter
+		this.setMaxListeners(0);
         this.on('data', (data) => {
             if(data.type == 'rpc-response') {
                 this.emit('rpc-response', data);

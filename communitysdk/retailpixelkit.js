@@ -130,10 +130,10 @@ class RetailPixelKit extends RPCClient {
     }
 
     hexToBase64Colors(element) {
-        let frameBuffer = new Buffer(element.length * 2, 0);
+        let frameBuffer = new Buffer.alloc(element.length * 2, 0);
 
         element.forEach((color, index) => {
-            let colorBin = new Buffer(2),
+            let colorBin = new Buffer.alloc(2),
                 rgb888,
                 rgb565;
 
