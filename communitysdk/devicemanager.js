@@ -36,14 +36,14 @@ class DeviceManager {
                 switch(vendorIds[port.vendorId]) {
                     case 'msk':
                         let msk = new MotionSensor({
-                            path: port.comName,
+                            path: port.path,
                             SerialChannel: this.SerialChannel
                         });
                         return msk.connect();
                         break;
                     case 'rpk':
                         let rpk = new PixelKit({
-                            path: port.comName,
+                            path: port.path,
                             SerialChannel: this.SerialChannel
                         });
                         return rpk.connect();
