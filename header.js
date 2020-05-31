@@ -11,11 +11,11 @@ class Header
 		this.pixel_refresh_interval = 1000;
 		this.pixel_separator_interval = 0; 
 		this.pixel_separator_step = 1;
-		this.pixel_color_hour_first = "#FFFFFF";
-		this.pixel_color_hour_second = "#FFFFFF";
-		this.pixel_color_minute_first = "#FFFFFF";
-		this.pixel_color_minute_second = "#FFFFFF";
-		this.pixel_color_separator = "#FFFFFF";
+		this.pixel_color_hour_first = "#AAAAAA";
+		this.pixel_color_hour_second = "#AAAAAA";
+		this.pixel_color_minute_first = "#AAAAAA";
+		this.pixel_color_minute_second = "#AAAAAA";
+		this.pixel_color_separator = "#AAAAAA";
 	}
 }
 
