@@ -1,14 +1,14 @@
 import header as hdr
 
-def pixel_frame_number(frame, number, section, color):
+def compile_pixel_frame_number(frame, number, section, color):
     # Obtain section start
     if (section == 0 or section == 1):
-        section_start = section * (hdr.pixel_number_width + hdr.pixel_display_interval)
+        section_start = section * (hdr.pixel_number_width + hdr.pixel_number_spacing)
     elif (section == 2 or section == 3):
         section_start = section * (hdr.pixel_number_width +
-                                   hdr.pixel_display_interval) + hdr.pixel_display_interval
+                                   hdr.pixel_number_spacing) + hdr.pixel_number_spacing
     else:
-        frame = ["#FF0000"] * hdr.pixel_display_total
+        frame = [hdr.pixel_color_error] * hdr.pixel_display_total
         return frame
 
     # Compile frame for each number
@@ -19,8 +19,10 @@ def pixel_frame_number(frame, number, section, color):
                   + section_start] = color
         frame[1 * hdr.pixel_display_width + 1 + section_start] = color
         frame[1 * hdr.pixel_display_width + 2 + section_start] = color
-        frame[hdr.pixel_number_height * hdr.pixel_display_width + 1 + section_start] = color
-        frame[hdr.pixel_number_height * hdr.pixel_display_width + 2 + section_start] = color
+        frame[hdr.pixel_number_height * hdr.pixel_display_width
+              + 1 + section_start] = color
+        frame[hdr.pixel_number_height * hdr.pixel_display_width
+              + 2 + section_start] = color
     elif (number == 1):
         for row in range(0, hdr.pixel_number_height):
             frame[(row + 1) * hdr.pixel_display_width + section_start + 1] = color
@@ -107,8 +109,10 @@ def pixel_frame_number(frame, number, section, color):
         frame[1 * hdr.pixel_display_width + 2 + section_start] = color
         frame[4 * hdr.pixel_display_width + 1 + section_start] = color
         frame[4 * hdr.pixel_display_width + 2 + section_start] = color
-        frame[hdr.pixel_number_height * hdr.pixel_display_width + 1 + section_start] = color
-        frame[hdr.pixel_number_height * hdr.pixel_display_width + 2 + section_start] = color
+        frame[hdr.pixel_number_height * hdr.pixel_display_width
+              + 1 + section_start] = color
+        frame[hdr.pixel_number_height * hdr.pixel_display_width
+              + 2 + section_start] = color
     elif (number == 9):
         for row in range(0, hdr.pixel_number_height):
             frame[(row + 1) * hdr.pixel_display_width + (hdr.pixel_number_width - 1)
@@ -122,13 +126,13 @@ def pixel_frame_number(frame, number, section, color):
         frame[2 * hdr.pixel_display_width + 0 + section_start] = color
         frame[3 * hdr.pixel_display_width + 0 + section_start] = color
     else:
-        frame = ["#FF0000"] * hdr.pixel_display_total
+        frame = [hdr.pixel_color_error] * hdr.pixel_display_total
 
     return frame
 
-def pixel_frame_separator(frame, color, display = True):
+def compile_pixel_frame_separator(frame, color, display = True):
     if (display == False):
-        color = "#000000"
+        color = hdr.pixel_color_background
 
     pixel_display_middle = int(hdr.pixel_display_width / 2) - 1
     frame[2 * hdr.pixel_display_width + pixel_display_middle] = color

@@ -9,10 +9,6 @@ import library as lib
 import device as dev
 
 def clock():
-    # Declare variable
-    separator_on = True
-    separator_time_counter = 0
-
     # Obtain pixel devices
     devices = dev.discover()
     devices_pixel = devices[0]
@@ -22,7 +18,7 @@ def clock():
         while (1):
             for device_pixel in devices_pixel:
                 # Declare variables
-                frame = ["#000000"] * hdr.pixel_display_total
+                frame = [hdr.pixel_color_background] * hdr.pixel_display_total
                 time_zone = tmz.timezone(hdr.pixel_time_zone)
                 date_time_now = str(dtm.datetime.now(time_zone)).split(" ")
                 date = date_time_now[0].split("-")
@@ -35,34 +31,26 @@ def clock():
                 minute_second = int(minute[1])
 
                 # Compile number frame
-                frame = lib.pixel_frame_number(frame, hour_first, 0,
-                                               hdr.pixel_color_hour_first)
-                frame = lib.pixel_frame_number(frame, hour_second, 1,
-                                               hdr.pixel_color_hour_second)
-                frame = lib.pixel_frame_number(frame, minute_first, 2,
-                                               hdr.pixel_color_minute_first)
-                frame = lib.pixel_frame_number(frame, minute_second, 3,
-                                               hdr.pixel_color_minute_second)
+                frame = lib.compile_pixel_frame_number(frame, hour_first, 0,
+                                                       hdr.pixel_color_hour_first)
+                frame = lib.compile_pixel_frame_number(frame, hour_second, 1,
+                                                       hdr.pixel_color_hour_second)
+                frame = lib.compile_pixel_frame_number(frame, minute_first, 2,
+                                                       hdr.pixel_color_minute_first)
+                frame = lib.compile_pixel_frame_number(frame, minute_second, 3,
+                                                       hdr.pixel_color_minute_second)
 
                 # Compile separator frame
-                if (separator_on == True and
-                    separator_time_counter < hdr.pixel_separator_interval):
-                    frame = lib.pixel_frame_separator(frame, hdr.pixel_color_separator, True)
-                    separator_time_counter += hdr.pixel_separator_step
-                elif (separator_on == True and
-                      separator_time_counter >= hdr.pixel_separator_interval):
-                    frame = lib.pixel_frame_separator(frame, hdr.pixel_color_separator, False)
-                    separator_on = False
-                    separator_time_counter = 0
-                elif (separator_on == False and
-                      separator_time_counter < hdr.pixel_separator_interval):
-                    frame = lib.pixel_frame_separator(frame, hdr.pixel_color_separator, False)
-                    separator_time_counter += hdr.pixel_separator_step
-                elif (separator_on == False and
-                      separator_time_counter >= hdr.pixel_separator_interval):
-                    frame = lib.pixel_frame_separator(frame, hdr.pixel_color_separator, True)
-                    separator_on = True
-                    separator_time_counter = 0
+                if (hdr.pixel_separator_on == True):
+                    frame = lib.compile_pixel_frame_separator(frame,
+                                                              hdr.pixel_color_separator,
+                                                              False)
+                    hdr.pixel_separator_on = False
+                elif (hdr.pixel_separator_on == False):
+                    frame = lib.compile_pixel_frame_separator(frame,
+                                                              hdr.pixel_color_separator,
+                                                              True)
+                    hdr.pixel_separator_on = True
 
                 # Send frame
                 device_pixel.stream_frame(frame)
