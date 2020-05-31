@@ -1,6 +1,6 @@
 #!/bin/node
 
-const PixelKit = require("./communitysdk/retailpixelkit");
+const PixelKit = require("../../sdk/retailpixelkit");
 const Header = require("./header").Header;
 const Library = require("./library");
 

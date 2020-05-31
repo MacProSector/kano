@@ -1,8 +1,8 @@
 #!/bin/node
 
-const DeviceManager = require("./communitysdk/devicemanager");
-const PixelKit = require("./communitysdk/retailpixelkit");
-const MotionSensorKit = require("./communitysdk/motionsensorkit");
+const DeviceManager = require("../src/sdk/devicemanager");
+const PixelKit = require("../src/sdk/retailpixelkit");
+const MotionSensorKit = require("../src/sdk/motionsensorkit");
 
 function discover(devices, print_info = false)
 {
