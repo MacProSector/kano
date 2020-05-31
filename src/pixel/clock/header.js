@@ -9,6 +9,7 @@ class Header
 		this.pixel_number_height = 7;
 		this.pixel_number_spacing = 1;
 		this.pixel_refresh_interval = 1000;
+		this.pixel_separator_on = true;
 		this.pixel_color_background = "#000000";
 		this.pixel_color_error = "#FF0000";
 		this.pixel_color_hour_first = "#AAAAAA";

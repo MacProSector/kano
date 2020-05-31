@@ -7,8 +7,6 @@ const Library = require("./library");
 const device_ip = "10.0.1.38"
 let device_pixel = new PixelKit({ip: device_ip});
 let header = new Header();
-let separator_on = true;
-let separator_time_counter = 0;
 
 function clock()
 {
@@ -39,19 +37,19 @@ function clock()
 									   header.pixel_color_minute_second);
 
     // Compile separator frame
-	if (separator_on)
+	if (header.pixel_separator_on)
 	{
         frame = Library.compile_pixel_frame_separator(frame,
 													  header.pixel_color_separator,
 													  false);
-        separator_on = false;
+        header.pixel_separator_on = false;
 	}
     else
 	{
         frame = Library.compile_pixel_frame_separator(frame,
 													  header.pixel_color_separator,
 													  true);
-        separator_on = true;
+        header.pixel_separator_on = true;
 	}
 
 	// Send frame
