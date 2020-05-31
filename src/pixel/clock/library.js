@@ -1,6 +1,6 @@
 const Header = require("./header").Header;
 
-function pixel_frame_number(frame, number, section, color)
+function compile_pixel_frame_number(frame, number, section, color)
 {
 	let header = new Header();
 	let section_start = 0;
@@ -9,13 +9,13 @@ function pixel_frame_number(frame, number, section, color)
 	if (section == 0 || section == 1)
 	{
         section_start = section * (header.pixel_number_width +
-								   header.pixel_display_interval);
+								   header.pixel_number_spacing);
 	}
     else if (section == 2 || section == 3)
 	{
         section_start = section * (header.pixel_number_width +
-                                   header.pixel_display_interval) +
-			header.pixel_display_interval;
+                                   header.pixel_number_spacing) +
+			header.pixel_number_spacing;
 	}
     else
 	{
@@ -199,7 +199,7 @@ function pixel_frame_number(frame, number, section, color)
 	return frame;
 }
 
-function pixel_frame_separator(frame, color, display = true)
+function compile_pixel_frame_separator(frame, color, display = true)
 {
 	let header = new Header();
 	
@@ -222,5 +222,5 @@ function pixel_frame_separator(frame, color, display = true)
     return frame;
 }
 
-exports.pixel_frame_number = pixel_frame_number;
-exports.pixel_frame_separator = pixel_frame_separator;
+exports.compile_pixel_frame_number = compile_pixel_frame_number;
+exports.compile_pixel_frame_separator = compile_pixel_frame_separator;

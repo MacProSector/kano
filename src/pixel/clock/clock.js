@@ -29,45 +29,29 @@ function clock()
 	}
 
     // Compile number frame
-    frame = Library.pixel_frame_number(frame, hour_first, 0,
+    frame = Library.compile_pixel_frame_number(frame, hour_first, 0,
 									   header.pixel_color_hour_first);
-    frame = Library.pixel_frame_number(frame, hour_second, 1,
+    frame = Library.compile_pixel_frame_number(frame, hour_second, 1,
 									   header.pixel_color_hour_second);
-    frame = Library.pixel_frame_number(frame, minute_first, 2,
+    frame = Library.compile_pixel_frame_number(frame, minute_first, 2,
 									   header.pixel_color_minute_first);
-    frame = Library.pixel_frame_number(frame, minute_second, 3,
+    frame = Library.compile_pixel_frame_number(frame, minute_second, 3,
 									   header.pixel_color_minute_second);
 
     // Compile separator frame
-    if (separator_on == true &&
-		separator_time_counter < header.pixel_separator_interval)
+	if (separator_on)
 	{
-        frame = Library.pixel_frame_separator(frame, header.pixel_color_separator,
-											  true);
-		separator_time_counter += header.pixel_separator_step;
-	}
-    else if (separator_on == true &&
-			 separator_time_counter >= header.pixel_separator_interval)
-	{
-        frame = Library.pixel_frame_separator(frame, header.pixel_color_separator,
-											  false);
+        frame = Library.compile_pixel_frame_separator(frame,
+													  header.pixel_color_separator,
+													  false);
         separator_on = false;
-        separator_time_counter = 0;
 	}
-    else if (separator_on == false &&
-			 separator_time_counter < header.pixel_separator_interval)
+    else
 	{
-        frame = Library.pixel_frame_separator(frame, header.pixel_color_separator,
-											  false);
-        separator_time_counter += header.pixel_separator_step;
-	}
-    else if (separator_on == false &&
-			 separator_time_counter >= header.pixel_separator_interval)
-	{
-        frame = Library.pixel_frame_separator(frame, header.pixel_color_separator,
-											  true);
+        frame = Library.compile_pixel_frame_separator(frame,
+													  header.pixel_color_separator,
+													  true);
         separator_on = true;
-		separator_time_counter = 0;
 	}
 
 	// Send frame
