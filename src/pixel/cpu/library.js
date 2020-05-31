@@ -44,7 +44,8 @@ function compile_frame(frame)
 		}
 		else
 		{
-			frame[row * header.pixel_display_width + column] = header.pixel_color;
+			frame[row * header.pixel_display_width + column] =
+				header.pixel_color_rows[row];
 		}
 	}
 

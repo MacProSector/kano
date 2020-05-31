@@ -1,0 +1,9 @@
+[Unit]
+Description=Kano Pixel CPU Speed Display Service
+After=network.target
+
+[Service]
+ExecStart=/opt/kano/scripts/launch.bash pixel cpu
+
+[Install]
+WantedBy=multi-user.target
