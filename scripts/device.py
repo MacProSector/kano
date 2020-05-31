@@ -1,9 +1,9 @@
 #!/usr/bin/python3
 
 import os
-import communitysdk.devicemanager as dem
-import communitysdk.retailpixelkit as pxl
-import communitysdk.motionsensorkit as mtn
+import sdk.devicemanager as dem
+import sdk.retailpixelkit as pxl
+import sdk.motionsensorkit as mtn
 
 def discover(print_info = False):
     # Declare variables

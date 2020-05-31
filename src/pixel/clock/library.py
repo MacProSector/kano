@@ -23,7 +23,7 @@ def pixel_frame_number(frame, number, section, color):
         frame[hdr.pixel_number_height * hdr.pixel_display_width + 2 + section_start] = color
     elif (number == 1):
         for row in range(0, hdr.pixel_number_height):
-            frame[(row + 1) * hdr.pixel_display_width + section_start] = color
+            frame[(row + 1) * hdr.pixel_display_width + section_start + 1] = color
     elif (number == 2):
         for col in range(0, hdr.pixel_number_width):
             frame[1 * hdr.pixel_display_width + col + section_start] = color
