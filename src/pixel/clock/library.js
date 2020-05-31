@@ -21,7 +21,7 @@ function pixel_frame_number(frame, number, section, color)
 	{
 		for (let i = 0; i < header.pixel_display_total; i ++)
 		{
-			frame.push("#FF0000");
+			frame.push(header.pixel_color_error);
 		}
 
         return frame;
@@ -192,7 +192,7 @@ function pixel_frame_number(frame, number, section, color)
 	{
 		for (let i = 0; i < header.pixel_display_total; i ++)
 		{
-			frame.push("#FF0000");
+			frame.push(header.pixel_color_error);
 		}
 	}
 
@@ -205,7 +205,7 @@ function pixel_frame_separator(frame, color, display = true)
 	
 	if (display == false)
 	{
-		color = "#000000";
+		color = header.pixel_color_background;;
 	}
 
     pixel_display_middle = Math.round(header.pixel_display_width / 2) - 1;

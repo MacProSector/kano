@@ -25,7 +25,7 @@ function clock()
 	// Initialize pixel frame
 	for (let i = 0; i < header.pixel_display_total; i ++)
 	{
-		frame.push("#000000");
+		frame.push(header.pixel_color_background);
 	}
 
     // Compile number frame
