@@ -129,6 +129,11 @@ function main()
 		header.timer_seconds = 0;
 	}
 
+	if (header.timer_seconds > 5999)
+	{
+		header.timer_seconds = 5999;
+	}
+
 	setInterval(() => timer(), header.pixel_refresh_interval);
 }
 
