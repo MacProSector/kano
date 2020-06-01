@@ -1,12 +1,13 @@
 #!/bin/node
 
 const PixelKit = require("../../sdk/retailpixelkit");
+const HeaderCommon = require("../common/header").Header;
 const Header = require("./header").Header;
 const Library = require("./library");
 
-const device_ip = "10.0.1.38"
-let device_pixel = new PixelKit({ip: device_ip});
+let header_common = new HeaderCommon();
 let header = new Header();
+let device_pixel = new PixelKit({ip: header_common.device_ip});
 
 function clock()
 {
@@ -60,7 +61,7 @@ function clock()
 
 function main()
 {
-	console.log(`Connected to pixel device at ${device_ip}.`);
+	console.log(`Connected to pixel device at ${header_common.device_ip}.`);
 
 	setInterval(() => clock(), header.pixel_refresh_interval);
 }
