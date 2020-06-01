@@ -3,7 +3,7 @@ Description=Kano Pixel Timer Service
 After=network.target
 
 [Service]
-ExecStart=/opt/kano/scripts/launch.bash pixel timer 135
+ExecStart=/opt/kano/scripts/launch.bash pixel timer 2 15
 
 [Install]
 WantedBy=multi-user.target

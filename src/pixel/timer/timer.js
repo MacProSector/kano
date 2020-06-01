@@ -118,16 +118,38 @@ function main()
 	console.log(`Connected to pixel device at ${device_ip}.`);
 
 	let argvs = process.argv.slice(2);
+	let timer_minutes = 0;
+	let timer_seconds = 0;
 
 	if (argvs.length > 0)
 	{
-		header.timer_seconds = parseInt(argvs[0]);
+		timer_minutes = parseInt(argvs[0]);
+
+		if (timer_minutes == NaN)
+		{
+			timer_minutes = 0;
+		}
+		else if (timer_minutes > 99)
+		{
+			timer_minutes = 99;
+		}
 	}
 
-	if (header.timer_seconds == NaN)
+	if (argvs.length > 1)
 	{
-		header.timer_seconds = 0;
+		timer_seconds = parseInt(argvs[1]);
+
+		if (timer_seconds == NaN)
+        {
+            timer_seconds = 0;
+        }
+		else if (timer_seconds > 59)
+		{
+			timer_seconds = 59;
+		}
 	}
+
+	header.timer_seconds = timer_minutes * 60 + timer_seconds;
 
 	if (header.timer_seconds > 5999)
 	{
